@@ -34,5 +34,9 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView"
         app:layout_constraintVertical_bias="0.768"
         app:srcCompat="@drawable/play" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@id/imageView2"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
