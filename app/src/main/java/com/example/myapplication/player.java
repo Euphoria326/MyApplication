@@ -54,6 +54,8 @@ public class player extends AppCompatActivity {
     private SeekBar seekBar;
     private player player1;
     private static final int NOTIFICATION_ID = 123;
+    private static final int NOTIFICATION_REQUEST_CODE=1;
+    private NotificationManager notificationManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,11 +144,11 @@ public class player extends AppCompatActivity {
 
             }
         });
+        //通知
         NotificationCompat.Builder builder=new NotificationCompat.Builder(player.this);
-        NotificationManager notificationManager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel("1", "my_channel", NotificationManager.IMPORTANCE_DEFAULT);
-            notificationManager.createNotificationChannel(channel);
+             notificationManager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
             notificationManager.createNotificationChannel(channel);
             builder.setChannelId("1");
         }
@@ -157,12 +159,10 @@ public class player extends AppCompatActivity {
         TaskStackBuilder stackBuilder=TaskStackBuilder.create(player.this);
         stackBuilder.addParentStack(player.class);
         stackBuilder.addNextIntent(result);
-        PendingIntent pendingIntent=stackBuilder.getPendingIntent(0,PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent pendingIntent=PendingIntent.getActivity(this,NOTIFICATION_REQUEST_CODE,result,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
         builder.setContentIntent(pendingIntent);
         Notification notification=builder.build();
-
         notificationManager.notify(1,notification);
-
     }
 
         public String musictime(int t) {

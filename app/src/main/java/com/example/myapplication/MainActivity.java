@@ -13,18 +13,19 @@ import static android.os.Build.VERSION_CODES.R;
 public class MainActivity extends AppCompatActivity {
 
 
-
+    private View view1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.myapplication.R.layout.activity_main);
-        Button button=(Button) findViewById(com.example.myapplication.R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        view1=(View)findViewById(com.example.myapplication.R.id.view1);
+        view1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent play=new Intent(MainActivity.this,player.class);
-                startActivity(play);
+                Intent start=new Intent(MainActivity.this,player.class);
+                startActivity(start);
             }
         });
+
     }
 }
