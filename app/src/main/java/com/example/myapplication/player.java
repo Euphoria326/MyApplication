@@ -31,13 +31,17 @@ public class player extends AppCompatActivity {
     private int pause = 1;
 
     private ImageView im1,im2,im3;
-    private MediaPlayer media;
+    private TextView title1,singer1,text1,text2;
+    private MediaPlayer media,mp1;
     private SeekBar seekBar;
     private player player1;
+    private ArrayList<Song> arrayList;
+    private ArrayList<Integer> commendsongs;
     private static final int NOTIFICATION_ID = 123;
     private static final int NOTIFICATION_REQUEST_CODE=1;
     private NotificationManager notificationManager;
-    private Uri uri;
+    private int num;
+    private String duration;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,30 +54,36 @@ public class player extends AppCompatActivity {
         anim.setInterpolator(new LinearInterpolator());
         anim.setRepeatCount(ObjectAnimator.INFINITE);
         anim.setRepeatMode(ObjectAnimator.RESTART);
-        media =MediaPlayer.create(this,R.raw.music1);
-        SeekBar seekBar = (SeekBar) findViewById(com.example.myapplication.R.id.seekBar);
+        anim.start();
+        commendsongs=new ArrayList<>();
+        commendsongs.add(0,R.raw.music1);
+        commendsongs.add(1,R.raw.music2);
+        commendsongs.add(2,R.raw.music3);
+        arrayList=new ArrayList<>();
+        arrayList.add(0,new Song(R.drawable.music1,"Steal The Show","Lauv"));
+        arrayList.add(1,new Song(R.drawable.music2,"WALLFLOWER","TWICE"));
+        arrayList.add(2,new Song(R.drawable.music3,"虫儿飞","儿童合唱团"));
+        title1=(TextView) findViewById(R.id.title);
+        singer1=(TextView) findViewById(R.id.singer);
+        Intent intent=getIntent();
+        int  songnum=intent.getIntExtra("pos",0);
+        String title=arrayList.get(songnum).getTitle();
+        String singer=arrayList.get(songnum).getArtist();
+        title1.setText(title);
+        singer1.setText(singer);
+        media =MediaPlayer.create(this,commendsongs.get(songnum));
+        seekBar = (SeekBar) findViewById(com.example.myapplication.R.id.seekBar);
         seekBar.setMax(media.getDuration());
-        TextView text1 = (TextView) findViewById(com.example.myapplication.R.id.textView);
-        TextView text2 = (TextView) findViewById(com.example.myapplication.R.id.textView2);
-        String duration = musictime(media.getDuration());
+        text1 = (TextView) findViewById(com.example.myapplication.R.id.textView);
+        text2 = (TextView) findViewById(com.example.myapplication.R.id.textView2);
+        duration = musictime(media.getDuration());
         text1.setText(duration);
         List<Song> songList = new ArrayList<>();
         ImageView exit=(ImageView) findViewById(R.id.exit);
         ImageView next=(ImageView) findViewById(R.id.next);
         ImageView forward=(ImageView) findViewById(R.id.forward);
 
-        TextView title1=(TextView) findViewById(R.id.title);
-        TextView singer1=(TextView) findViewById(R.id.singer);
-        ArrayList<Integer> commendsongs=new ArrayList<>();
-        commendsongs.add(0,R.raw.music1);
-        commendsongs.add(1,R.raw.music2);
-        commendsongs.add(2,R.raw.music3);
-        Intent intent=getIntent();
-        Song song=(Song) intent.getSerializableExtra("song");
-        String title=song.getTitle();
-        String singer=song.getArtist();
-        title1.setText(title);
-        singer1.setText(singer);
+
 
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +123,56 @@ public class player extends AppCompatActivity {
                 startActivity(exitmain);
             }
         });
+            media.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    seekBar.setMax(media.getDuration());
+                    duration = musictime(media.getDuration());
+                    text1.setText(duration);
+                }
+            });
+
+        next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(num<commendsongs.size()-1){
+                    num++;
+                }
+                else {
+                    num=0;
+                }
+                title1.setText(arrayList.get(num).getTitle());
+                singer1.setText(arrayList.get(num).getArtist());
+                if(media.isPlaying()) media.stop();
+                media.reset();
+                media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
+                seekBar.setMax(media.getDuration());
+                duration = musictime(media.getDuration());
+                text1.setText(duration);
+                media.start();
+            }
+        });
+
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(num>0){
+                    num--;
+                }
+                else num=commendsongs.size()-1;
+                title1.setText(arrayList.get(num).getTitle());
+                singer1.setText(arrayList.get(num).getArtist());
+                if(media.isPlaying()) media.stop();
+                media.reset();
+                media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
+                seekBar.setMax(media.getDuration());
+                duration = musictime(media.getDuration());
+                text1.setText(duration);
+                media.start();
+            }
+        });
+
         Timer timer = new Timer();
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
@@ -139,18 +199,34 @@ public class player extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                media.seekTo(seekBar.getProgress());
+                //media.seekTo(seekBar.getProgress());
 
             }
         });
-        media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+
+        media.setOnCompletionListener(completionListener);
+        /*media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
             @Override
             public void onCompletion(MediaPlayer mp) {
-                media.setLooping(true);
 
+                if (num < commendsongs.size() - 1) {
+                    num++;
+                } else {
+                    num = 0;
+                }
+                title1.setText(arrayList.get(num).getTitle());
+                singer1.setText(arrayList.get(num).getArtist());
+                if (media.isPlaying()) media.stop();
+                media.reset();
+                media = MediaPlayer.create(getApplicationContext(), commendsongs.get(num));
+                seekBar.setMax(media.getDuration());
+                duration = musictime(media.getDuration());
+                text1.setText(duration);
+                media.start();
             }
-        });
 
+        });
+*/
         //通知
         NotificationCompat.Builder builder=new NotificationCompat.Builder(player.this);
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
@@ -171,6 +247,7 @@ public class player extends AppCompatActivity {
         Notification notification=builder.build();
         notificationManager.notify(1,notification);
     }
+
     @Override
     protected void onStart() {
         if (media!=null){
@@ -193,6 +270,59 @@ public class player extends AppCompatActivity {
         }
         super.onPause();
     }
+    void loadsong()
+    {
+
+        if(num==0) {
+            title1.setText(arrayList.get(num).getTitle());
+            singer1.setText(arrayList.get(num).getArtist());
+            //if(media.isPlaying()) media.stop();
+            media.reset();
+            media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
+            seekBar.setMax(media.getDuration());
+            duration = musictime(media.getDuration());
+            text1.setText(duration);
+            media.start();
+            media.setOnCompletionListener(completionListener);
+        }
+        if(num==1) {
+            title1.setText(arrayList.get(num).getTitle());
+            singer1.setText(arrayList.get(num).getArtist());
+            //if(media.isPlaying()) media.stop();
+            media.reset();
+            media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
+            seekBar.setMax(media.getDuration());
+            duration = musictime(media.getDuration());
+            text1.setText(duration);
+            media.start();
+            media.setOnCompletionListener(completionListener);
+        }
+
+        if(num==2) {
+            title1.setText(arrayList.get(num).getTitle());
+            singer1.setText(arrayList.get(num).getArtist());
+            //if(media.isPlaying()) media.stop();
+            media.reset();
+            media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
+            seekBar.setMax(media.getDuration());
+            duration = musictime(media.getDuration());
+            text1.setText(duration);
+            media.start();
+            media.setOnCompletionListener(completionListener);
+        }
+
+    }
+    MediaPlayer.OnCompletionListener completionListener=new MediaPlayer.OnCompletionListener() {
+        @Override
+        public void onCompletion(MediaPlayer mp) {
+            if (num < commendsongs.size() - 1) {
+                num++;
+            } else {
+                num = 0;
+            }
+            loadsong();
+        }
+    };
     public String musictime(int t) {
         String time;
         int min=t/1000/60;
@@ -202,7 +332,16 @@ public class player extends AppCompatActivity {
         time+=sec;
         return time;
     }
-
+    /*public void playmusic(int n){
+        title1.setText(arrayList.get(num).getTitle());
+        singer1.setText(arrayList.get(num).getArtist());
+        if(media.isPlaying()) media.stop();;
+        media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
+        seekBar.setMax(media.getDuration());
+        duration = musictime(media.getDuration());
+        text1.setText(duration);
+        media.start();
+    }*/
 }
 
 
