@@ -10,14 +10,18 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+
 public class BookAdapter extends ArrayAdapter<Book> {
-    public int resld;
+    private int resld;
     public BookAdapter(Context context, int resource, List<Book> objects) {
         super(context, resource, objects);
         resld = resource;
     }
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent){
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
         Book book= getItem(position);//获得当前列表项Book对象
         View view= LayoutInflater.from(getContext()).inflate(resld,parent,false);
         TextView bookname=(TextView)view.findViewById(R.id.bookname);

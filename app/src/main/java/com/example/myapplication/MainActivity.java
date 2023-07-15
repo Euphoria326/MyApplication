@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
@@ -25,6 +26,14 @@ public class MainActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.myapplication.R.layout.activity_main);
+        ImageView user=(ImageView) findViewById(com.example.myapplication.R.id.user);
+        user.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent info=new Intent(MainActivity.this, info.class);
+                startActivity(info);
+            }
+        });
         /*ListView listView=(ListView) findViewById(com.example.myapplication.R.id.list);
         HashMap<String,String> music=new HashMap<>();
         music.put("Steal The Show","Lauv");
