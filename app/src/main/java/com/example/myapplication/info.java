@@ -17,7 +17,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class info extends AppCompatActivity {
     //按钮
-
     public void ClickButton(View view){
         TextView tv1=(TextView) findViewById(R.id.textView);
         tv1.setText("摆烂啦，不干啦");
