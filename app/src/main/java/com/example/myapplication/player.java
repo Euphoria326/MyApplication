@@ -61,6 +61,7 @@ public class player extends AppCompatActivity {
         ImageView exit=(ImageView) findViewById(R.id.exit);
         ImageView next=(ImageView) findViewById(R.id.next);
         ImageView forward=(ImageView) findViewById(R.id.forward);
+
         TextView title1=(TextView) findViewById(R.id.title);
         TextView singer1=(TextView) findViewById(R.id.singer);
         ArrayList<Integer> commendsongs=new ArrayList<>();
@@ -185,11 +186,11 @@ public class player extends AppCompatActivity {
     }
     @Override
     protected void onPause() {
-            if (media!=null){
-                media.stop();
-                media.release();
-                media=null;
-            }
+        if (media!=null){
+            media.stop();
+            media.release();
+            media=null;
+        }
         super.onPause();
     }
     public String musictime(int t) {

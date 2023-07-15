@@ -23,7 +23,7 @@ public class info extends AppCompatActivity {
     }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(R.layout.info_activity);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button bt2 = (Button) findViewById(R.id.button2);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,17 +33,17 @@ public class info extends AppCompatActivity {
             }
         });
 
-        setContentView(R.layout.activity_main);
-        List<Book> bookList=new ArrayList<>();
-        String[] names = getResources().getStringArray(R.array.listViewData);
+        ArrayList<Book> bookList=new ArrayList<>();
+        String[] names = getResources().getStringArray(R.array.LearnListViewData);
         Book book1=new Book(R.drawable.black,names[0]);
         bookList.add(book1);
         Book book2=new Book(R.drawable.black,names[1]);
         bookList.add(book2);
         Book book3=new Book(R.drawable.black,names[2]);
         bookList.add(book3);
-        BookAdapter adapter=new BookAdapter(info.this,R.layout.activity_main,bookList);
-        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) ListView listView=(ListView)findViewById(R.id.listView);
+        BookAdapter adapter=new BookAdapter(info.this,R.layout.info_list,bookList);
+        //@SuppressLint({"MissingInflatedId", "LocalSuppress"})
+        ListView listView=(ListView)findViewById(R.id.listView2);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
