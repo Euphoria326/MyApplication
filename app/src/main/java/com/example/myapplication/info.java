@@ -17,13 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class info extends AppCompatActivity {
     //按钮
+
     public void ClickButton(View view){
         TextView tv1=(TextView) findViewById(R.id.textView);
         tv1.setText("摆烂啦，不干啦");
     }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        setContentView(com.example.myapplication.R.layout.info);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) Button bt2 = (Button) findViewById(R.id.button2);
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
