@@ -33,7 +33,6 @@ public class info extends AppCompatActivity {
             }
         });
 
-        setContentView(R.layout.activity_main);
         List<Book> bookList=new ArrayList<>();
         String[] names = getResources().getStringArray(R.array.listViewData);
         Book book1=new Book(R.drawable.black,names[0]);
