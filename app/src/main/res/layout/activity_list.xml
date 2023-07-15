@@ -73,6 +73,12 @@
                 android:layout_height="50dp"
                 android:background="@drawable/play"
                 android:maxHeight="10dp">
+            <ImageButton
+                android:id="@+id/random_playlist"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/play"
+                android:maxHeight="10dp">
 
         </LinearLayout>
 
