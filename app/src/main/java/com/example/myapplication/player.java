@@ -11,6 +11,8 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -40,6 +42,12 @@ public class player extends AppCompatActivity {
     private static final int NOTIFICATION_ID = 123;
     private static final int NOTIFICATION_REQUEST_CODE=1;
     private NotificationManager notificationManager;
+    private NotificationCompat.Builder builder;
+    private NotificationChannel channel;
+    private Notification notification;
+    private TaskStackBuilder stackBuilder;
+    private PendingIntent pendingIntent;
+    private Intent result;
     private int num;
     private String duration;
     @Override
@@ -66,7 +74,7 @@ public class player extends AppCompatActivity {
         title1=(TextView) findViewById(R.id.title);
         singer1=(TextView) findViewById(R.id.singer);
         Intent intent=getIntent();
-        int  songnum=intent.getIntExtra("pos",0);
+        int songnum=intent.getIntExtra("pos",0);
         String title=arrayList.get(songnum).getTitle();
         String singer=arrayList.get(songnum).getArtist();
         title1.setText(title);
@@ -83,7 +91,26 @@ public class player extends AppCompatActivity {
         ImageView next=(ImageView) findViewById(R.id.next);
         ImageView forward=(ImageView) findViewById(R.id.forward);
 
-
+        //通知
+        builder=new NotificationCompat.Builder(player.this);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+             channel = new NotificationChannel("1", "my_channel", NotificationManager.IMPORTANCE_MIN);
+            notificationManager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+            builder.setChannelId("1");
+        }
+        builder.setSmallIcon(com.example.myapplication.R.drawable.music);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),arrayList.get(songnum).getImage()));
+        builder.setContentTitle("MusicAPP");
+        builder.setContentText("您正在收听"+arrayList.get(songnum).getTitle());
+        result=new Intent(player.this,player.class);
+        stackBuilder=TaskStackBuilder.create(player.this);
+        stackBuilder.addParentStack(player.class);
+        stackBuilder.addNextIntent(result);
+        pendingIntent=PendingIntent.getActivity(this,NOTIFICATION_REQUEST_CODE,result,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        builder.setContentIntent(pendingIntent);
+        notification=builder.build();
+        notificationManager.notify(1,notification);
 
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,15 +169,7 @@ public class player extends AppCompatActivity {
                 else {
                     num=0;
                 }
-                title1.setText(arrayList.get(num).getTitle());
-                singer1.setText(arrayList.get(num).getArtist());
-                if(media.isPlaying()) media.stop();
-                media.reset();
-                media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
-                seekBar.setMax(media.getDuration());
-                duration = musictime(media.getDuration());
-                text1.setText(duration);
-                media.start();
+                init(num);
             }
         });
 
@@ -161,15 +180,7 @@ public class player extends AppCompatActivity {
                     num--;
                 }
                 else num=commendsongs.size()-1;
-                title1.setText(arrayList.get(num).getTitle());
-                singer1.setText(arrayList.get(num).getArtist());
-                if(media.isPlaying()) media.stop();
-                media.reset();
-                media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
-                seekBar.setMax(media.getDuration());
-                duration = musictime(media.getDuration());
-                text1.setText(duration);
-                media.start();
+                init(num);
             }
         });
 
@@ -181,6 +192,7 @@ public class player extends AppCompatActivity {
                 seekBar.setProgress(media.getCurrentPosition());
             }
         }, 0, 1000);
+
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -191,63 +203,18 @@ public class player extends AppCompatActivity {
                 String current= musictime(media.getCurrentPosition());
                 text2.setText(current);
             }
-
             @Override
             public void onStartTrackingTouch(SeekBar seekBar) {
 
             }
-
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                //media.seekTo(seekBar.getProgress());
 
             }
         });
 
         media.setOnCompletionListener(completionListener);
-        /*media.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
-            @Override
-            public void onCompletion(MediaPlayer mp) {
-
-                if (num < commendsongs.size() - 1) {
-                    num++;
-                } else {
-                    num = 0;
-                }
-                title1.setText(arrayList.get(num).getTitle());
-                singer1.setText(arrayList.get(num).getArtist());
-                if (media.isPlaying()) media.stop();
-                media.reset();
-                media = MediaPlayer.create(getApplicationContext(), commendsongs.get(num));
-                seekBar.setMax(media.getDuration());
-                duration = musictime(media.getDuration());
-                text1.setText(duration);
-                media.start();
-            }
-
-        });
-*/
-        //通知
-        NotificationCompat.Builder builder=new NotificationCompat.Builder(player.this);
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-            NotificationChannel channel = new NotificationChannel("1", "my_channel", NotificationManager.IMPORTANCE_MIN);
-             notificationManager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-            notificationManager.createNotificationChannel(channel);
-            builder.setChannelId("1");
-        }
-        builder.setSmallIcon(com.example.myapplication.R.drawable.music);
-        builder.setContentTitle("MusicAPP");
-        builder.setContentText("您正在收听。。。");
-        Intent result=new Intent(player.this,player.class);
-        TaskStackBuilder stackBuilder=TaskStackBuilder.create(player.this);
-        stackBuilder.addParentStack(player.class);
-        stackBuilder.addNextIntent(result);
-        PendingIntent pendingIntent=PendingIntent.getActivity(this,NOTIFICATION_REQUEST_CODE,result,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
-        builder.setContentIntent(pendingIntent);
-        Notification notification=builder.build();
-        notificationManager.notify(1,notification);
     }
-
     @Override
     protected void onStart() {
         if (media!=null){
@@ -270,47 +237,19 @@ public class player extends AppCompatActivity {
         }
         super.onPause();
     }
-    void loadsong()
-    {
-
+    void loadsong() {
         if(num==0) {
-            title1.setText(arrayList.get(num).getTitle());
-            singer1.setText(arrayList.get(num).getArtist());
-            //if(media.isPlaying()) media.stop();
-            media.reset();
-            media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
-            seekBar.setMax(media.getDuration());
-            duration = musictime(media.getDuration());
-            text1.setText(duration);
-            media.start();
+            init(num);
             media.setOnCompletionListener(completionListener);
         }
         if(num==1) {
-            title1.setText(arrayList.get(num).getTitle());
-            singer1.setText(arrayList.get(num).getArtist());
-            //if(media.isPlaying()) media.stop();
-            media.reset();
-            media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
-            seekBar.setMax(media.getDuration());
-            duration = musictime(media.getDuration());
-            text1.setText(duration);
-            media.start();
+            init(num);
             media.setOnCompletionListener(completionListener);
         }
-
         if(num==2) {
-            title1.setText(arrayList.get(num).getTitle());
-            singer1.setText(arrayList.get(num).getArtist());
-            //if(media.isPlaying()) media.stop();
-            media.reset();
-            media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
-            seekBar.setMax(media.getDuration());
-            duration = musictime(media.getDuration());
-            text1.setText(duration);
-            media.start();
+            init(num);
             media.setOnCompletionListener(completionListener);
         }
-
     }
     MediaPlayer.OnCompletionListener completionListener=new MediaPlayer.OnCompletionListener() {
         @Override
@@ -332,16 +271,37 @@ public class player extends AppCompatActivity {
         time+=sec;
         return time;
     }
-    /*public void playmusic(int n){
+    public void refreshno(int num){
+        //通知
+        builder=new NotificationCompat.Builder(player.this);
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            channel = new NotificationChannel("1", "my_channel", NotificationManager.IMPORTANCE_MIN);
+            notificationManager=(NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+            notificationManager.createNotificationChannel(channel);
+            builder.setChannelId("1");
+        }
+        builder.setSmallIcon(com.example.myapplication.R.drawable.music);
+        builder.setLargeIcon(BitmapFactory.decodeResource(getResources(),arrayList.get(num).getImage()));
+        builder.setContentTitle("MusicAPP");
+        builder.setContentText("您正在收听"+arrayList.get(num).getTitle());
+        result=new Intent(player.this,player.class);
+        stackBuilder=TaskStackBuilder.create(player.this);
+        stackBuilder.addParentStack(player.class);
+        stackBuilder.addNextIntent(result);
+        pendingIntent=PendingIntent.getActivity(this,NOTIFICATION_REQUEST_CODE,result,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
+        builder.setContentIntent(pendingIntent);
+        notification=builder.build();
+        notificationManager.notify(1,notification);
+    }
+    public void init(int num){
+        refreshno(num);
         title1.setText(arrayList.get(num).getTitle());
         singer1.setText(arrayList.get(num).getArtist());
-        if(media.isPlaying()) media.stop();;
+        media.reset();
         media=MediaPlayer.create(getApplicationContext(),commendsongs.get(num));
         seekBar.setMax(media.getDuration());
         duration = musictime(media.getDuration());
         text1.setText(duration);
         media.start();
-    }*/
+    }
 }
-
-
