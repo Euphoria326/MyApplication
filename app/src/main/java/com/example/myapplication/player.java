@@ -62,6 +62,7 @@ public class player extends AppCompatActivity {
         ImageView next=(ImageView) findViewById(R.id.next);
         ImageView forward=(ImageView) findViewById(R.id.forward);
         TextView title1=(TextView) findViewById(R.id.title);
+        TextView singer1=(TextView) findViewById(R.id.singer);
         ArrayList<Integer> commendsongs=new ArrayList<>();
         commendsongs.add(0,R.raw.music1);
         commendsongs.add(1,R.raw.music2);
@@ -69,7 +70,9 @@ public class player extends AppCompatActivity {
         Intent intent=getIntent();
         Song song=(Song) intent.getSerializableExtra("song");
         String title=song.getTitle();
+        String singer=song.getArtist();
         title1.setText(title);
+        singer1.setText(singer);
 
         im1.setOnClickListener(new View.OnClickListener() {
             @Override
