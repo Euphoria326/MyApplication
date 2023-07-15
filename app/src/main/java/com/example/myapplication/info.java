@@ -33,17 +33,18 @@ public class info extends AppCompatActivity {
             }
         });
 
-        ArrayList<Book> bookList=new ArrayList<>();
-        String[] names = getResources().getStringArray(R.array.LearnListViewData);
+        setContentView(R.layout.activity_main);
+        List<Book> bookList=new ArrayList<>();
+        String[] names = getResources().getStringArray(R.array.listViewData);
         Book book1=new Book(R.drawable.black,names[0]);
         bookList.add(book1);
         Book book2=new Book(R.drawable.black,names[1]);
         bookList.add(book2);
         Book book3=new Book(R.drawable.black,names[2]);
         bookList.add(book3);
+
         BookAdapter adapter=new BookAdapter(info.this,R.layout.info_list,bookList);
-        //@SuppressLint({"MissingInflatedId", "LocalSuppress"})
-        ListView listView=(ListView)findViewById(R.id.listView2);
+        ListView listView=(ListView)findViewById(R.id.listView);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
