@@ -2,7 +2,6 @@ package com.example.myapplication;
 
 import android.content.ContentValues;
 import android.content.Context;
-import android.database.ContentObservable;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -52,4 +51,16 @@ public class SQLite extends SQLiteOpenHelper {
         }
         return false;
     }
+    public long update(String username, String password){
+        SQLiteDatabase db = getWritableDatabase();
+        ContentValues cv = new ContentValues();
+        cv.put("password",password);
+        long i = db.update("users", cv, "name like ?", new String[]{username});
+        return i;
+    }
+    public boolean equals(String password1, String password2){
+        boolean i=password1.equals(password2);
+        return i;
+    }
 }
+

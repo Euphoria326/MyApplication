@@ -11,49 +11,78 @@
         android:id="@+id/imageView7"
         android:layout_width="185dp"
         android:layout_height="175dp"
+        android:layout_marginEnd="113dp"
+        android:layout_marginStart="113dp"
+        android:layout_marginTop="36dp"
+        andriod:layout_constraintBottom_toTopOf="@+id/imageView10"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
         andriod:srcCompat="@drawable/white"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="113dp"
-        tools:layout_editor_absoluteY="36dp" />
+        tools:ignore="MissingConstraints" />
+
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="310dp"
         android:layout_height="465dp"
+        android:layout_marginBottom="55dp"
+        android:layout_marginEnd="51dp"
+        android:layout_marginStart="50dp"
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toBottomOf="@+id/imageView7"
         andriod:srcCompat="@drawable/shape02"
-        tools:layout_editor_absoluteX="50dp"
-        tools:layout_editor_absoluteY="211dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="910dp"
+        android:layout_marginEnd="180dp"
         android:text="用户名"
         android:textSize="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="236dp" />
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.358"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toBottomOf="@+id/imageView10"
+        andriod:layout_constraintVertical_bias="0.488"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/edt_UserName"
         android:layout_width="290dp"
         android:layout_height="45dp"
+        android:layout_marginBottom="150dp"
         android:ems="10"
         android:inputType="text"
-        android:text="请输入用户名"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="271dp" />
+        android:text=""
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.504"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.531"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="180dp"
         android:text="原密码"
         android:textSize="20dp"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="322dp"
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.358"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.505"
         tools:ignore="MissingConstraints" />
+
 
     <EditText
         android:id="@+id/edt_OldPassWord"
@@ -61,10 +90,13 @@
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="368dp" />
-
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.504"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.551"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView9"
@@ -72,9 +104,13 @@
         android:layout_height="wrap_content"
         android:text="新密码"
         android:textSize="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="423dp" />
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.174"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.614"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/edt_NewPassWord"
@@ -82,9 +118,13 @@
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="469dp" />
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.504"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.692"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView10"
@@ -92,9 +132,13 @@
         android:layout_height="wrap_content"
         android:text="再次输入新密码"
         android:textSize="20dp"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="520dp" />
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.225"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.741"
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/edt_NewPassWord2"
@@ -102,17 +146,24 @@
         android:layout_height="45dp"
         android:ems="10"
         android:inputType="textPassword"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="61dp"
-        tools:layout_editor_absoluteY="565dp" />
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintHorizontal_bias="0.495"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.814"
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btn_Confirm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="确认修改"
-        tools:layout_editor_absoluteX="158dp"
-        tools:layout_editor_absoluteY="611dp"
+        andriod:layout_constraintBottom_toBottomOf="parent"
+        andriod:layout_constraintEnd_toEndOf="parent"
+        andriod:layout_constraintStart_toStartOf="parent"
+        andriod:layout_constraintTop_toTopOf="parent"
+        andriod:layout_constraintVertical_bias="0.9"
         tools:ignore="MissingConstraints" />
 
 
