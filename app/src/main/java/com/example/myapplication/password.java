@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,12 +17,16 @@ public class password  extends AppCompatActivity {
         private boolean isFlag = false;
         private SQLite sqlite;
 
+
+
         @Override
+
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.change);
             sqlite = new SQLite(this);
             //获取实例对象
+            ImageView draft=(ImageView) findViewById(R.id.exit3);
             edt_UserName = this.findViewById(R.id.edt_UserName);
             edt_OldPassWord = this.findViewById(R.id.edt_OldPassWord);
             edt_NewPassWord = this.findViewById(R.id.edt_NewPassWord);
@@ -43,7 +48,13 @@ public class password  extends AppCompatActivity {
                     }
                 }
             });
-
+           draft.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent exitmain=new Intent(password.this,MainActivity.class);
+                    startActivity(exitmain);
+                }
+            });
             //旧密码，用作用户修改密码验证条件
             edt_OldPassWord.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
