@@ -25,11 +25,13 @@
         android:text="修改信息"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintHorizontal_bias="0.99"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.026"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintVertical_bias="0.037"
+        tools:ignore="MissingConstraints"
+        app:backgroundTintMode="screen"
+        android:background="@drawable/shape03"/>
 
     <ImageView
         android:id="@+id/imageView5"
