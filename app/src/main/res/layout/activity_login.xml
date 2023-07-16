@@ -92,11 +92,11 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="124dp"
-        android:layout_height="41dp"
+        android:layout_width="137dp"
+        android:layout_height="38dp"
+        android:background="@drawable/shape03"
         android:text="管理员登录"
         app:backgroundTintMode="screen"
-        android:background="@drawable/shape03"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

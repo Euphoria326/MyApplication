@@ -162,14 +162,13 @@ public class player extends AppCompatActivity {
         next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if(num<commendsongs.size()-1){
                     num++;
                 }
                 else {
                     num=0;
                 }
-                init(num);
+                loadsong();
             }
         });
 
@@ -180,7 +179,7 @@ public class player extends AppCompatActivity {
                     num--;
                 }
                 else num=commendsongs.size()-1;
-                init(num);
+                loadsong();
             }
         });
 

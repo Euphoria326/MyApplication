@@ -10,10 +10,12 @@
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="116dp"
-        android:layout_height="53dp"
+        android:layout_width="113dp"
+        android:layout_height="43dp"
         android:layout_marginBottom="68dp"
         android:text="日系治愈：无法抗拒的温柔男声"
+        android:textColor="#FF6633"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.945"
@@ -23,11 +25,13 @@
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="116dp"
-        android:layout_height="53dp"
+        android:layout_width="100dp"
+        android:layout_height="69dp"
         android:layout_marginBottom="68dp"
         android:layout_marginEnd="5dp"
         android:text="「氛围音乐」让身体 悬浮音符之间"
+        android:textColor="#FF6633"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
@@ -187,11 +191,13 @@
 
     <TextView
         android:id="@+id/textView5"
-        android:layout_width="116dp"
-        android:layout_height="53dp"
+        android:layout_width="100dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="68dp"
         android:layout_marginStart="-3dp"
         android:text="Country | 自驾旅行，赏乡野风情"
+        android:textColor="#FF6633"
+        android:textSize="13dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.111"
