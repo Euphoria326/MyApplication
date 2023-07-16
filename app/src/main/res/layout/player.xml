@@ -161,8 +161,8 @@
 
     <View
         android:id="@+id/view"
-        android:layout_width="173dp"
-        android:layout_height="118dp"
+        android:layout_width="166dp"
+        android:layout_height="100dp"
         android:layout_marginStart="1dp"
         android:background="@drawable/shape02"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -178,8 +178,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="13dp"
         android:text="TextView"
-        android:textColor="#FF6633"
+        android:textColor="#FFFFFF"
         android:textSize="21dp"
+        android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="@+id/view"
         app:layout_constraintHorizontal_bias="0.397"
@@ -191,14 +192,15 @@
         android:id="@+id/singer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="-9dp"
         android:text="TextView"
-        android:textColor="#FF6633"
+        android:textStyle="italic"
+        android:textColor="#FFFFFF"
         android:textSize="15dp"
         app:layout_constraintBottom_toBottomOf="@+id/view"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/view"
-        app:layout_constraintVertical_bias="0.707" />
+        app:layout_constraintVertical_bias="0.704" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
