@@ -6,79 +6,86 @@
     android:background="#f6f7fb"
 
     tools:context=".List">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:id="@+id/top"
-            android:layout_marginTop="25dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             android:orientation="horizontal">
+
             <ImageButton
                 android:id="@+id/exit"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="10dp"
                 android:background="@drawable/exit"
-                android:maxHeight="10dp">
-            </ImageButton>
+                android:maxHeight="10dp"></ImageButton>
+
             <TextView
+                android:id="@+id/list_text1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:textColor="#FF6633"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:id="@+id/list_text1"
                 android:text="歌曲"
+                android:textColor="#FF6633"
                 android:textSize="25dp"
                 android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/s_key"
-                android:layout_width="130dp"
+                android:layout_width="230dp"
                 android:layout_height="match_parent"
                 android:background="@drawable/login_radius"
                 android:hint="输入搜索信息"
                 android:paddingStart="15dp"
                 android:textSize="15sp" />
+
             <ImageButton
                 android:id="@+id/search"
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="10dp"
                 android:background="@drawable/find"
-                android:maxHeight="10dp">
-            </ImageButton>
+                android:maxHeight="10dp"></ImageButton>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
+
             <ImageView
                 android:id="@+id/song"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="30dp"
                 android:layout_marginTop="30dp"
                 android:layout_marginRight="10dp"
                 android:background="@drawable/test" />
 
             <ImageButton
-                android:id="@+id/playlist"
+                android:id="@+id/playthelist"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="75dp"
                 android:background="@drawable/play"
-                android:maxHeight="10dp">
+                android:maxHeight="10dp" />
+
             <ImageButton
                 android:id="@+id/random_playlist"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:background="@drawable/play"
-                android:maxHeight="10dp">
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="75dp"
+                android:background="@drawable/randomplay"
+                android:maxHeight="10dp" />
 
         </LinearLayout>
 
@@ -88,17 +95,18 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
 
-            android:layout_marginRight="10dp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="10dp"
             android:background="@drawable/frame_radius">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="10dp" />
+                android:layout_marginLeft="15dp" />
 
         </LinearLayout>
+
 
     </LinearLayout>
 </LinearLayout>
