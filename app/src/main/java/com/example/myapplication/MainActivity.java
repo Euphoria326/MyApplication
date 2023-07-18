@@ -65,10 +65,10 @@ public class MainActivity extends AppCompatActivity{
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Song song=arrayList.get(position);
-                Intent player=new Intent(MainActivity.this, com.example.myapplication.player.class);
-                player.putExtra("song",new Song(0,song.getTitle(),song.getArtist()));
-                startActivity(player);
+                Intent openplayer=new Intent(MainActivity.this, player.class);
+                //player.putExtra("song",new Song(0,song.getTitle(),song.getArtist()));
+                openplayer.putExtra("pos",position);
+                startActivity(openplayer);
             }
         });
     }
