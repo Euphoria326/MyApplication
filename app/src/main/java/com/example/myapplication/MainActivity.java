@@ -6,12 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,13 +23,14 @@ import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity{
-
+    private ImageView im1;
+    private TextView tx11;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.myapplication.R.layout.activity_main);
         ImageView user=(ImageView) findViewById(com.example.myapplication.R.id.user);
-        user.setOnClickListener(new View.OnClickListener() {
+        user.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent info=new Intent(MainActivity.this, info.class);
@@ -69,6 +72,19 @@ public class MainActivity extends AppCompatActivity{
                 //player.putExtra("song",new Song(0,song.getTitle(),song.getArtist()));
                 openplayer.putExtra("pos",position);
                 startActivity(openplayer);
+            }
+        });
+        im1=findViewById(R.id.imageView6);
+        tx11=findViewById(R.id.textView11);
+        im1.setOnClickListener(new OnClickListener() {
+
+            /**
+             * @param view
+             */
+            @Override
+            public void onClick(View view) {
+                Intent List = new Intent(MainActivity.this,MainActivity.class);
+                startActivity(List);
             }
         });
     }

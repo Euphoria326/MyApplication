@@ -1,5 +1,4 @@
 <resources>
-    <string name="app_name">My Application</string>
     <string-array name="listViewData">
         <item>华语歌</item>
         <item>英语歌</item>

@@ -187,7 +187,7 @@ public class player extends AppCompatActivity {
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
             public void run() {
-                if(media!=null)
+                if(media!=null);
                 seekBar.setProgress(media.getCurrentPosition());
             }
         }, 0, 1000);
