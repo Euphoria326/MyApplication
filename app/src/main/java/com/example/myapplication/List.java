@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -49,6 +50,14 @@ public class List extends AppCompatActivity {
                 //player.putExtra("song",new Song(0,song.getTitle(),song.getArtist()));
                 openplayer.putExtra("pos2",position);
                 startActivity(openplayer);
+            }
+        });
+        ImageView exit=(ImageView) findViewById(R.id.exitm);
+        exit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent exitmain=new Intent(List.this,MainActivity.class);
+                startActivity(exitmain);
             }
         });
 /*

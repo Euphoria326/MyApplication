@@ -47,7 +47,7 @@
         app:srcCompat="@drawable/gedan2" />
 
     <ImageView
-        android:id="@+id/imageView15"
+        android:id="@+id/exitm"
         android:layout_width="64dp"
         android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
