@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.VibrationEffect;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -18,7 +19,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
 
@@ -83,8 +83,8 @@ public class MainActivity extends AppCompatActivity{
              */
             @Override
             public void onClick(View view) {
-                Intent List = new Intent(MainActivity.this,MainActivity.class);
-                startActivity(List);
+                Intent openList = new Intent(MainActivity.this,List.class);
+                startActivity(openList);
             }
         });
     }

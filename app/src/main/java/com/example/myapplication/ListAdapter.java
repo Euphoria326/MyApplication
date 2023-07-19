@@ -1,27 +1,31 @@
 package com.example.myapplication;
 
+import android.accounts.Account;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myapplication.javabean.List_item;
 
 import java.util.ArrayList;
 
 public class ListAdapter extends ArrayAdapter<List_item> {
-    private Context scontext;
+
+   private Context scontext;
     private int sresource;
-    public ListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<List_item> list_itemArrayList){
+    public ListAdapter(@NonNull Context context, int resource, @NonNull ArrayList<List_item> list_items){
         super(context,resource);
         this.scontext=context;
-        this.sresource=resource;}
+        this.sresource=resource;
+    }
 
     @NonNull
     @Override
@@ -39,4 +43,5 @@ public class ListAdapter extends ArrayAdapter<List_item> {
         singer.setText(getItem(position).getArtist());
         return view;
     }
+
 }

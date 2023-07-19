@@ -99,7 +99,7 @@
             android:layout_marginRight="10dp"
             android:background="@drawable/frame_radius">
 
-            <androidx.recyclerview.widget.RecyclerView
+            <ListView
                 android:id="@+id/songlist"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
