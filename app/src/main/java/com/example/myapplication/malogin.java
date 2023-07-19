@@ -37,7 +37,7 @@ public class malogin extends AppCompatActivity implements View.OnClickListener {
         int id = view.getId();
 
             if(id == R.id.button21){
-                Intent i = new Intent(this, player.class);
+                Intent i = new Intent(this, admin.class);
                 startActivity(i);
         }
     }

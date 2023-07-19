@@ -1,9 +1,9 @@
 package com.example.myapplication;
 
-public class Book {
+public class Songlist {
     private int picld;
     private String name;
-    public Book(int picld, String name) {
+    public Songlist(int picld, String name) {
         this.picld = picld;
         this.name = name;
     }

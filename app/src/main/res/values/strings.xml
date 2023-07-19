@@ -1,7 +1,7 @@
 <resources>
+    <string name="app_name">My Application</string>
     <string-array name="listViewData">
-        <item>华语歌</item>
-        <item>英语歌</item>
-        <item>日语歌</item>
+        <item>「氛围音乐」让身体悬浮音符之间</item>
+        <item>纯音 | 静淌时隙悄然掠过 | 助眠</item>
     </string-array>
 </resources>

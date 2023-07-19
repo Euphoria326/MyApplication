@@ -1,36 +1,30 @@
 package com.example.myapplication;
-import com.example.myapplication.player;
+import com.example.myapplication.Adapter.SongAdapter;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.SeekBar;
-import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 
 
 public class MainActivity extends AppCompatActivity{
-    private ImageView im1;
-    private TextView tx11;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(com.example.myapplication.R.layout.activity_main);
         ImageView user=(ImageView) findViewById(com.example.myapplication.R.id.user);
-        user.setOnClickListener(new OnClickListener() {
+        TextView me=(TextView) findViewById(R.id.me);
+        TextView main=(TextView) findViewById(R.id.main);
+        ImageView gedan=(ImageView) findViewById(R.id.gedan);
+        user.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent info=new Intent(MainActivity.this, info.class);
@@ -74,17 +68,25 @@ public class MainActivity extends AppCompatActivity{
                 startActivity(openplayer);
             }
         });
-        im1=findViewById(R.id.imageView6);
-        tx11=findViewById(R.id.textView11);
-        im1.setOnClickListener(new OnClickListener() {
-
-            /**
-             * @param view
-             */
+        gedan.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent List = new Intent(MainActivity.this,MainActivity.class);
-                startActivity(List);
+            public void onClick(View v) {
+                Intent openlist=new Intent(MainActivity.this,List.class);
+                startActivity(openlist);
+            }
+        });
+        me.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openme=new Intent(MainActivity.this, info.class);
+                startActivity(openme);
+            }
+        });
+        main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent openmain=new Intent(MainActivity.this, MainActivity.class);
+                startActivity(openmain);
             }
         });
     }
