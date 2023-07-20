@@ -31,7 +31,7 @@ public class player extends AppCompatActivity {
     private int pause = 1;
     private int style=1;
 
-    private ImageView im1,im2,im3;
+    private ImageView im1,im2,im3,next,forward;
     private TextView title1,singer1,text1,text2;
     private ImageView ps1,ps2,ps3;
     private MediaPlayer media,mp1;
@@ -113,8 +113,8 @@ public class player extends AppCompatActivity {
         text1.setText(duration);
         List<Song> songList = new ArrayList<>();
         ImageView exit=(ImageView) findViewById(R.id.exit);
-        ImageView next=(ImageView) findViewById(R.id.next);
-        ImageView forward=(ImageView) findViewById(R.id.forward);
+        next=(ImageView) findViewById(R.id.next);
+        forward=(ImageView) findViewById(R.id.forward);
         ImageView cbutton=(ImageView) findViewById(R.id.commentbutton);
 
 
@@ -171,6 +171,7 @@ public class player extends AppCompatActivity {
             public void onClick(View v) {
                 im2.setVisibility(View.INVISIBLE);
                 im1.setVisibility(View.VISIBLE);
+                notificationManager.cancel(1);
                 anim.pause();
                 if (media.isPlaying()) {
                     media.pause();
@@ -219,8 +220,12 @@ public class player extends AppCompatActivity {
             });
 
         next.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View v) {
+                im1.setVisibility(View.INVISIBLE);
+                im2.setVisibility(View.VISIBLE);
                 if (style == 1) {
                     if (num < size - 1) {
                         num++;
@@ -244,8 +249,11 @@ public class player extends AppCompatActivity {
         });
 
         forward.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                im1.setVisibility(View.INVISIBLE);
+                im2.setVisibility(View.VISIBLE);
                 if (style == 1) {
                     if (num > 0) {
                         num--;
@@ -353,12 +361,24 @@ public class player extends AppCompatActivity {
     MediaPlayer.OnCompletionListener completionListener=new MediaPlayer.OnCompletionListener() {
         @Override
         public void onCompletion(MediaPlayer mp) {
-            if (num < size - 1) {
-                num++;
-            } else {
-                num = 0;
+            if (style == 1) {
+                if (num < size - 1) {
+                    num++;
+                } else {
+                    num = 0;
+                }
+                loadsong();
             }
-            loadsong();
+            else if (style==2){
+                loadsong();
+            } else if (style==3) {
+                Random r=new Random();
+                int min = 0;
+                int max = size-1;
+                num = r.nextInt(max - min + 1) ;
+                loadsong();
+
+            }
         }
     };
     public String musictime(int t) {

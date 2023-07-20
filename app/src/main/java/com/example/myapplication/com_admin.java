@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.example.myapplication.Adapter.com_adminAdapter;
@@ -50,6 +52,14 @@ public class com_admin extends AppCompatActivity {
                 });
                 builder.show();
 
+            }
+        });
+        ImageView exit2=(ImageView) findViewById(R.id.exitadmin2);
+        exit2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent exita2=new Intent(com_admin.this,admin.class);
+                startActivity(exita2);
             }
         });
     }

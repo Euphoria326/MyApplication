@@ -39,9 +39,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginEnd="334dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="14dp"
+        android:layout_marginEnd="315dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="7dp"
         android:text="TextView"
         android:textColor="#ff6633"
         android:textSize="25dp" />

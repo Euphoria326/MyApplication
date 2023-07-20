@@ -24,15 +24,15 @@
         android:id="@+id/textView12"
         android:layout_width="234dp"
         android:layout_height="74dp"
-        android:text="「氛围音乐」让身体悬浮音符之间"
+        android:text="氛围音乐、让身体悬浮音符之间"
         android:textSize="22dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.836"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.153" />
+        app:layout_constraintVertical_bias="0.124" />
 
     <ImageView
         android:id="@+id/imageView14"
@@ -43,13 +43,13 @@
         app:layout_constraintHorizontal_bias="0.054"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.168"
+        app:layout_constraintVertical_bias="0.135"
         app:srcCompat="@drawable/gedan2" />
 
     <ImageView
         android:id="@+id/exitm"
-        android:layout_width="64dp"
-        android:layout_height="60dp"
+        android:layout_width="52dp"
+        android:layout_height="53dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.03"
@@ -66,10 +66,10 @@
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.267" />
+        app:layout_constraintVertical_bias="0.266" />
 
     <EditText
         android:id="@+id/select01"
@@ -79,7 +79,7 @@
         android:background="@drawable/shape01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.59"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.033" />
@@ -91,14 +91,14 @@
         android:layout_marginTop="-5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
+        app:layout_constraintHorizontal_bias="0.806"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.033"
         app:srcCompat="@drawable/find" />
 
     <ImageView
-        android:id="@+id/imageView16"
+        android:id="@+id/play"
         android:layout_width="68dp"
         android:layout_height="67dp"
         app:layout_constraintBottom_toBottomOf="parent"
