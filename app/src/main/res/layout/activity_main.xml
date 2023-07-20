@@ -207,27 +207,28 @@
 
     <View
         android:id="@+id/view2"
+        android:layout_width="180dp"
+        android:layout_height="46dp"
         android:background="@drawable/shape01"
-        android:layout_width="201dp"
-        android:layout_height="52dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0.069"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.998"/>
+        app:layout_constraintVertical_bias="0.998" />
 
     <View
         android:id="@+id/view3"
-        android:layout_width="209dp"
-        android:layout_height="53dp"
+        android:layout_width="179dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/shape01"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.866"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.998" />
 
     <TextView
         android:id="@+id/me"
@@ -237,10 +238,10 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.778"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.974" />
+        app:layout_constraintVertical_bias="0.973" />
 
     <TextView
         android:id="@+id/main"
@@ -250,7 +251,7 @@
         android:textColor="#ff6633"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.219"
+        app:layout_constraintHorizontal_bias="0.216"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.973" />
